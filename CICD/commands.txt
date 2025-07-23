@@ -1,0 +1,22 @@
+# Update the system and install dependencies
+sudo yum update -y
+sudo yum install ruby wget -y
+
+# Download the CodeDeploy agent RPM package
+cd /tmp
+wget https://aws-codedeploy-ap-south-1.s3.amazonaws.com/latest/codedeploy-agent.noarch.rpm
+
+# Install the CodeDeploy agent
+sudo yum install -y codedeploy-agent.noarch.rpm
+
+# Start and check the status of the CodeDeploy agent
+sudo systemctl start codedeploy-agent
+sudo systemctl status codedeploy-agent
+
+sudo nginx -t
+sudo vi /etc/nginx/conf.d/default.conf
+
+ssh -i keypair ec2-user@ipaddress
+
+permissions - chmod 400 keypair
+
